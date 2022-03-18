@@ -1,0 +1,88 @@
+.navmenu {
+  min-width: 226px;
+  background: #F9FAFC;
+  position: sticky;
+  overflow-y: hidden;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  border-right: 1px solid #E4E6EA;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  
+  // logo
+  .logo {
+    padding-top: 28px;
+    padding-left: 16px;
+    margin-bottom: 44px;
+  }
+
+  .menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 104px;
+    .menu-link {
+      margin-right: 20px;
+      padding: 13px 22px;
+      font-size: 14px;
+      font-weight: 400;
+      color: $gray;
+      text-decoration: none;
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      &:hover {
+        @extend .active;
+        opacity: 0.4;
+      }
+    }
+
+    .divider {
+      border-top: 1px solid $gray;
+      margin: 16px 0;
+      opacity: 0.1;
+    }
+
+    .active {
+      border-radius: 0px 8px 8px 0px;
+      background: rgba(233, 236, 241, 1);
+      color: $blue;
+    }
+  }
+
+
+  // sticky profile content
+  &__profile {
+    background-color: #F2F4F7;
+    padding: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &-photo {
+      min-height: 32px;
+      min-width: 32px;
+      background-color: $black;
+      color: #fff;
+      border-radius: 8px;
+    }
+  }
+
+  &__content {
+    margin-right: 20px;
+    &-name {
+      color: $black;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+    }
+    &-email {
+      color: $gray;
+      font-size: 10px;
+      font-weight: 400;
+    }
+  }
+}

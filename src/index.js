@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './scss/main.scss';
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Quotes from './Routes/Quotes';
+import Layout from './Components/Layout';
+import Navmenu from './Components/Navmenu';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Layout>
+      <BrowserRouter>
+        <Navmenu />
+        <div style={{ width: '100%' }}>
+          <Routes>
+            <Route exact path="/quotes" element={<Quotes />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </Layout>
   </React.StrictMode>,
   document.getElementById('root')
 );

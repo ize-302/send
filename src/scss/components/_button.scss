@@ -1,0 +1,21 @@
+button {
+  border: none;
+  cursor: pointer;
+  &.primary {
+    background: $blue;
+    padding: 13px 14px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  &.bordered {
+    background-color: transparent;
+    border: 1px solid $gray;
+    color: $gray;
+    border-radius: 12px;
+    padding: 3px 12px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+}

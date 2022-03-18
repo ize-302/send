@@ -1,0 +1,27 @@
+@import './colors';
+@import './fonts';
+@import './navmenu';
+
+// components
+@import './components/header';
+@import './components/button';
+@import './components/tabs';
+@import './components/row';
+
+// modules
+@import './modules/quotes';
+@import './modules/layout';
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}

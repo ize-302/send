@@ -8,10 +8,9 @@ const Pagination = ({ itemsPerPage, items, updatePageParam, itemOffset }) => {
   const query = new URLSearchParams(location.search);
   const page = query.get('page')
 
-
   React.useEffect(() => {
     setPageCount(Math.ceil(items.length / itemsPerPage))
-  }, [items, itemOffset])
+  }, [items, itemOffset, itemsPerPage])
 
   const handlePageClick = (event) => {
     updatePageParam(event.selected)

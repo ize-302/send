@@ -21,21 +21,22 @@ const Quotes = () => {
     else filtered = data
     setupdatedData(filtered)
 
-    const newOffset = ((page - 1) * itemsPerPage) % updatedData.length;
+    const newOffset = ((parseInt(page) - 1) * itemsPerPage);
     setItemOffset(newOffset);
-  }, [location]);
+  }, [tab, page]);
 
   const updatePageParam = ({ index, tab }) => {
     navigate({
-      search: `?page=${index || 0 + 1}&tab=${tab}`
+      search: `?page=${index || 1}&tab=${tab}`
     })
   }
 
   React.useEffect(() => {
     navigate({
-      search: `?page=${page || 1}&tab=all`
+      search: `?page=${page || 1}&tab=${tab || 'all'}`
     })
-  }, []);
+    console.log(page, tab)
+  }, [navigate, page, tab]);
 
   return (
     <div>
@@ -47,7 +48,7 @@ const Quotes = () => {
       {/* tabs */}
       <Tabs updateUrlQueryParams={(payload) => updatePageParam({ tab: payload })} />
       {/* items */}
-      {updatedData.slice(itemOffset + 1, itemsPerPage * page).map(row => (
+      {updatedData.slice(itemOffset, itemOffset + itemsPerPage).map(row => (
         <Item key={row.id} row={row} />
       ))}
       {/* pagination */}

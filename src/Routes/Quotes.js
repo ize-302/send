@@ -2,23 +2,41 @@ import React from 'react';
 import Item from '../Components/Item';
 import Tabs from '../Components/Tabs';
 import data from '../data.json'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Pagination from '../Components/Pagination';
 
 const Quotes = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const query = new URLSearchParams(location.search);
   const tab = query.get('tab')
+  const page = query.get('page')
   const [updatedData, setupdatedData] = React.useState([]);
+  const itemsPerPage = 6
+  const [itemOffset, setItemOffset] = React.useState(0);
 
   React.useEffect(() => {
-    if (tab !== 'all') {
-      const filtered = data.filter(item => item.status === tab)
-      setupdatedData(filtered)
-    } else {
-      setupdatedData(data)
-    }
+    let filtered
+    if (tab !== 'all') filtered = data.filter(item => item.status === tab)
+    else filtered = data
+    setupdatedData(filtered)
+
+    const newOffset = ((page - 1) * itemsPerPage) % updatedData.length;
+    setItemOffset(newOffset);
   }, [location]);
+
+  const updatePageParam = ({ index, tab }) => {
+    navigate({
+      search: `?page=${index || 0 + 1}&tab=${tab}`
+    })
+  }
+
+  React.useEffect(() => {
+    navigate({
+      search: `?page=${page || 1}&tab=all`
+    })
+  }, []);
+
   return (
     <div>
       {/* page header */}
@@ -27,13 +45,13 @@ const Quotes = () => {
         <button className="primary">Create New</button>
       </div>
       {/* tabs */}
-      <Tabs />
+      <Tabs updateUrlQueryParams={(payload) => updatePageParam({ tab: payload })} />
       {/* items */}
-      {updatedData.slice(0, 6).map(row => (
-        <Item row={row} />
+      {updatedData.slice(itemOffset + 1, itemsPerPage * page).map(row => (
+        <Item key={row.id} row={row} />
       ))}
       {/* pagination */}
-      <Pagination />
+      <Pagination itemOffset={itemOffset} itemsPerPage={itemsPerPage} items={updatedData} updatePageParam={(payload) => updatePageParam({ tab: tab, index: payload + 1 })} />
     </div>
   );
 }

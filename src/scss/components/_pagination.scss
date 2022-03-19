@@ -1,0 +1,30 @@
+.pagination-wrapper {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: $gray;
+  justify-content: flex-end;
+  margin: 24px 0;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  color: $gray;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0;
+  li {
+    cursor: pointer;
+    &.selected {
+      font-weight: 700;
+      color: $black;
+    }
+    &.previous, &.next {
+      display: none;
+    }
+  }
+}

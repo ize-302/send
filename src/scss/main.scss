@@ -1,8 +1,8 @@
-@import './colors';
-@import './fonts';
-@import './navmenu';
+@import './core/colors';
+@import './core/fonts';
 
 // components
+@import './components/navmenu';
 @import './components/header';
 @import './components/button';
 @import './components/tabs';

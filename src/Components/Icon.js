@@ -141,3 +141,22 @@ export const Arrow = () => {
     </svg>
   );
 }
+
+
+export const ControlArrowDown = () => {
+  return (
+    <svg width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.733398 0.265625L4.00007 3.99896L7.26673 0.265625H0.733398Z" fill="#16192C" />
+    </svg>
+
+  );
+}
+
+export const ControlArrowUp = () => {
+  return (
+    <svg width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.26465 3.73242L3.99798 -0.000911713L0.731315 3.73242L7.26465 3.73242Z" fill="#16192C" />
+    </svg>
+
+  );
+}

@@ -12,7 +12,7 @@ const Quotes = () => {
   const tab = query.get('tab')
   const page = query.get('page')
   const [updatedData, setupdatedData] = React.useState([]);
-  const itemsPerPage = 6
+  const [itemsPerPage, setitemsPerPage] = React.useState(6);
   const [itemOffset, setItemOffset] = React.useState(0);
 
   React.useEffect(() => {
@@ -23,7 +23,7 @@ const Quotes = () => {
 
     const newOffset = ((parseInt(page) - 1) * itemsPerPage);
     setItemOffset(newOffset);
-  }, [tab, page]);
+  }, [tab, page, itemsPerPage]);
 
   const updatePageParam = ({ index, tab }) => {
     navigate({
@@ -37,6 +37,11 @@ const Quotes = () => {
     })
     console.log(page, tab)
   }, [navigate, page, tab]);
+
+
+  const updatedItemsPerPage = (perpage) => {
+    setitemsPerPage(perpage)
+  }
 
   return (
     <div>
@@ -52,7 +57,7 @@ const Quotes = () => {
         <Item key={row.id} row={row} />
       ))}
       {/* pagination */}
-      <Pagination itemOffset={itemOffset} itemsPerPage={itemsPerPage} items={updatedData} updatePageParam={(payload) => updatePageParam({ tab: tab, index: payload + 1 })} />
+      <Pagination updatedItemsPerPage={(perpage) => updatedItemsPerPage(perpage)} itemOffset={itemOffset} itemsPerPage={itemsPerPage} items={updatedData} updatePageParam={(payload) => updatePageParam({ tab: tab, index: payload + 1 })} />
     </div>
   );
 }

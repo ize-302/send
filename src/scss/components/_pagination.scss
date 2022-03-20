@@ -27,4 +27,40 @@
       display: none;
     }
   }
+
+  &__items-per-page {
+    border: 1px solid $gray5;
+    border-radius: 8px;
+    padding-left: 9px;
+    min-width: 50px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__items-per-page-controls {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid $gray5;
+    padding: 0px 5px;
+    // gap: 1px;
+  }
+}
+
+input {
+  border: none;
+  width: 15px;
+  &:focus {
+    outline: none;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
